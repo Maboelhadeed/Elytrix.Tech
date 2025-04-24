@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1024px-Placeholder_view_vector.svg.png", width=200)
 def render_dashboard():
     st.title("Elytrix Dashboard")
     st.markdown("**Precision Wins.**")
