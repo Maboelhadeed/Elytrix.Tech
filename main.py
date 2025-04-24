@@ -1,19 +1,14 @@
 import streamlit as st
-from dashboard.dashboard_ui import render_dashboard
-from dashboard.home import render_home
+from dashboard import dashboard_ui, home, theme_manager
 
-# Set page config
-st.set_page_config(page_title="Elytrix", layout="wide")
+# Theme toggle
+theme_manager.apply_theme()
 
-# Theme toggle (top right)
-theme = st.selectbox("Select Theme", ["Dark", "Light"], index=0)
-st.session_state["theme"] = theme
+# Page selection
+page = st.sidebar.selectbox("Choose a tab", ("Home", "Dashboard"))
 
-# Navigation menu
-page = st.selectbox("Navigate", ["Home", "Dashboard"])
-
-# Routing
+# Navigation logic
 if page == "Home":
-    render_home()
+    home.render_home()
 elif page == "Dashboard":
-    render_dashboard()
+    dashboard_ui.render_dashboard()
