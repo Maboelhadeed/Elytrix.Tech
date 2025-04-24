@@ -22,8 +22,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Sidebar logo
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1024px-Placeholder_view_vector.svg.png", width=120)
 
 # Render dashboard
 render_dashboard()
