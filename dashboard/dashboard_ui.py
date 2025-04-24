@@ -1,11 +1,22 @@
 import streamlit as st
-import pandas as pd
-st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1024px-Placeholder_view_vector.svg.png", width=200)
+from PIL import Image
+import os
+
+# Load and display logo centered
+logo_path = os.path.join("dashboard", "assets", "elytrix_logo.png")
+logo = Image.open(logo_path)
+
+st.image(logo, width=180)
 def render_dashboard():
+    # Load and display centered logo
+logo_path = os.path.join("dashboard", "assets", "elytrix_logo.png")
+logo = Image.open(logo_path)
+st.image(logo, width=180)
     st.title("Elytrix Dashboard")
     st.markdown("**Precision Wins.**")
 
     with st.sidebar:
+        st.image(logo, width=100)
         st.header("Elytrix Controls")
         st.info("Choose a tab from above")
 
