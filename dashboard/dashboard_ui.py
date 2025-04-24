@@ -4,7 +4,32 @@ from PIL import Image
 import os
 
 def render_dashboard():
-    # Load and show the main Elytrix logo at the top center
+    # Theme toggle
+    theme = st.sidebar.radio("Select Theme", ("Dark", "Light"))
+
+    # Custom CSS for dark/light mode
+    if theme == "Dark":
+        st.markdown("""
+            <style>
+                body {
+                    background-color: #0e1117;
+                    color: white;
+                }
+                .stApp {
+                    background-color: #0e1117;
+                }
+            </style>
+        """, unsafe_allow_html=True)
+    else:
+        st.markdown("""
+            <style>
+                .stApp {
+                    background-color: #f8f9fa;
+                }
+            </style>
+        """, unsafe_allow_html=True)
+
+    # Load and show Elytrix logo in the center
     logo_path = os.path.join("dashboard", "assets", "elytrix_logo.png")
     logo = Image.open(logo_path)
     st.image(logo, width=180)
@@ -12,13 +37,11 @@ def render_dashboard():
     st.title("Elytrix Dashboard")
     st.markdown("*Precision Wins.*")
 
-    # Sidebar section with logo and controls
     with st.sidebar:
         st.image(logo, width=100)
         st.header("Elytrix Controls")
         st.info("Choose a tab from above")
 
-    # Display metrics
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric("Capital", "$5,200", "+4.2%")
@@ -30,7 +53,6 @@ def render_dashboard():
     st.markdown("---")
     st.subheader("Strategy Performance")
 
-    # Example chart data
     chart_data = pd.DataFrame({
         "Strategy A": pd.Series([10, 12, 11, 13, 15]),
         "Strategy B": pd.Series([6, 5, 8, 7, 9]),
