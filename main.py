@@ -1,27 +1,15 @@
 import streamlit as st
-
-# This must be FIRST Streamlit command
-st.set_page_config(
-    page_title="Elytrix Dashboard",
-    layout="wide",
-    page_icon=":chart_with_upwards_trend:"
-)
-
 from dashboard.dashboard_ui import render_dashboard
+from dashboard.home import render_home
 
-# Apply background style
-st.markdown("""
-    <style>
-        .reportview-container {
-            background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-            color: white;
-        }
-        header, footer {
-            visibility: hidden;
-        }
-    </style>
-""", unsafe_allow_html=True)
+# Theme toggle
+theme = st.sidebar.radio("Select Theme", ["Dark", "Light"], index=0)
+st.session_state['theme'] = theme
 
+# Navigation
+page = st.sidebar.selectbox("Choose a tab", ["Home", "Dashboard"])
 
-# Render dashboard
-render_dashboard()
+if page == "Home":
+    render_home()
+elif page == "Dashboard":
+    render_dashboard()
